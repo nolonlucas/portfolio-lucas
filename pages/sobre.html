@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <!-- SEO META TAGS -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Conheça mais sobre mim: trajetória, habilidades e experiência em desenvolvimento front-end e segurança digital." />
+  <meta name="keywords" content="sobre mim, desenvolvedor, front-end, engenharia de software, habilidades, portfólio" />
+  <meta name="author" content="[Seu Nome]" />
+  <meta name="robots" content="index, follow" />
+
+  <meta property="og:title" content="Sobre Mim — [ Portfolio ]" />
+  <meta property="og:description" content="Minha trajetória como desenvolvedora front-end." />
+
+  <title>Sobre Mim — [ Portfolio ]</title>
+
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23000'/><text y='22' font-size='18' fill='%2300ff88'>&gt;_</text></svg>" />
+
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+
+  <div class="cursor" aria-hidden="true"></div>
+  <div class="cursor-ring" aria-hidden="true"></div>
+  <div class="grid-bg" aria-hidden="true"></div>
+  <div class="scanlines" aria-hidden="true"></div>
+  <!-- MATRIX RAIN CANVAS -->
+  <canvas id="matrix-canvas" aria-hidden="true"></canvas>
+  <div class="page-transition" aria-hidden="true"></div>
+
+  <!-- NAVEGAÇÃO -->
+  <div class="nav__desktop-shell">
+    <nav class="nav" role="navigation" aria-label="Navegação principal">
+      <ul class="nav__links" role="list">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="projetos.html">Projetos</a></li>
+        <li><a href="contato.html">Contato</a></li>
+      </ul>
+    </nav>
+
+    <a href="sobre.html" class="nav__profile-link" aria-label="Ir para Sobre">
+      <img src="../Assets/profile_picture.png" alt="Foto de perfil" />
+    </a>
+  </div>
+
+  <nav class="nav" role="navigation" aria-label="Navegação principal">
+    <a href="../index.html" class="nav__logo" aria-label="Ir para o início">[ Portfolio ]</a>
+
+    <div class="nav__mobile-shortcuts">
+      <a href="projetos.html" class="nav__shortcut">[ Projetos ]</a>
+      <a href="contato.html" class="nav__shortcut">[ Contato ]</a>
+    </div>
+
+    <button class="nav__toggle" aria-label="Abrir menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <div class="page-wrapper">
+    <main>
+
+      <!-- ABOUT HERO -->
+      <section class="about-hero" id="sobre" aria-label="Sobre mim">
+        <div style="width:100%;">
+
+          <p class="section-label reveal">01 — Sobre Mim</p>
+
+          <div class="about-grid">
+
+            <!-- IMAGEM / PLACEHOLDER -->
+            <div class="about__img-wrap reveal reveal-delay-1">
+              <div class="about__img-box">
+                <span class="about__img-placeholder" aria-hidden="true">&gt;_</span>
+                <div class="about__corner about__corner--tl"></div>
+                <div class="about__corner about__corner--tr"></div>
+                <div class="about__corner about__corner--bl"></div>
+                <div class="about__corner about__corner--br"></div>
+              </div>
+              <!-- Linha decorativa abaixo da imagem -->
+              <div style="margin-top:1rem; display:flex; gap:0.5rem; align-items:center;">
+                <div style="width:40px; height:1px; background:var(--green); opacity:0.5;"></div>
+                <span style="font-family:var(--font-mono); font-size:0.65rem; color:var(--gray-400); letter-spacing:0.1em;">FOTO AQUI</span>
+              </div>
+            </div>
+
+            <!-- TEXTO -->
+            <div class="about__text">
+
+              <h1 class="reveal reveal-delay-1">
+                Olá, <span class="highlight">Conheça Meu Perfil</span>
+              </h1>
+
+              <p class="about__bio reveal reveal-delay-2">
+                Sempre fui movido pela curiosidade de entender como a tecnologia funciona
+                além da superfície. Essa busca me levou a explorar áreas como engenharia
+                reversa, automação, inteligência artificial e desenvolvimento de software,
+                utilizando cada projeto como uma oportunidade para aprender novas técnicas
+                e aprofundar meus conhecimentos sobre sistemas complexos.
+              </p>
+
+              <p class="about__bio reveal reveal-delay-2">
+                Ao longo da minha trajetória, desenvolvi soluções envolvendo visão
+                computacional, modelos de IA, integração com hardware, APIs e automações,
+                sempre com o objetivo de transformar desafios em soluções práticas e
+                eficientes. Acredito que a engenharia de software vai além de escrever
+                código: ela consiste em compreender problemas, inovar e criar tecnologias
+                que realmente façam a diferença.
+              </p>
+
+              <!-- STATS -->
+              <div class="stats-row reveal reveal-delay-3">
+                <div class="stat">
+                  <span class="stat__num" data-counter="7" data-suffix="+">7+</span>
+                  <span class="stat__label">Projetos concluídos</span>
+                </div>
+                <div class="stat">
+                  <span class="stat__num" data-counter="1" data-suffix="+">1+</span>
+                  <span class="stat__label">Anos estudando</span>
+                </div>
+                <div class="stat">
+                  <span class="stat__num" data-counter="7" data-suffix="+">7+</span>
+                  <span class="stat__label">Tecnologias</span>
+                </div>
+              </div>
+
+              <!-- SKILLS -->
+              <div class="reveal reveal-delay-3">
+                <p style="font-family:var(--font-mono); font-size:0.65rem; color:var(--green); letter-spacing:0.15em; text-transform:uppercase; margin-bottom:0.75rem;">
+                  // stack_tecnológico
+                </p>
+                <div class="skills-grid">
+                  <span class="skill-tag">HTML5</span>
+                  <span class="skill-tag">CSS3</span>
+                  <span class="skill-tag">JavaScript</span>
+                  <span class="skill-tag">React</span>
+                  <span class="skill-tag">Node.js</span>
+                  <span class="skill-tag">Git</span>
+                  <span class="skill-tag">Figma</span>
+                  <span class="skill-tag">MySQL</span>
+                  <span class="skill-tag">Linux</span>
+                </div>
+              </div>
+
+              <div class="reveal reveal-delay-4" style="margin-top:2rem;">
+                <a href="contato.html" class="btn btn--primary">
+                  <span class="btn-arrow">→</span>
+                  <span>Entre em Contato</span>
+                </a>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- EXPERIÊNCIA / TIMELINE -->
+      <section aria-label="Trajetória">
+        <p class="section-label reveal">02 — Trajetória</p>
+
+        <div style="max-width: 640px;">
+
+          <div class="timeline-item reveal reveal-delay-1">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <span class="timeline-year">01/03/2025</span>
+              <h3 class="timeline-title">Engenharia de Software</h3>
+              <p class="timeline-desc">Inicio do Curso de Engenharia de Software</p>
+            </div>
+          </div>
+
+          <div class="timeline-item reveal reveal-delay-2">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <span class="timeline-year">01/09/2025</span>
+              <h3 class="timeline-title">Primeiros Projetos da faculdade</h3>
+              <p class="timeline-desc">Desenvolveu seus primeiros projetos acadêmicos, aplicando lógicas de programação</p>
+            </div>
+          </div>
+
+          <div class="timeline-item reveal reveal-delay-3">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <span class="timeline-year">01/02/2026</span>
+              <h3 class="timeline-title">Desenvolvimento de Projetos Avançados</h3>
+              <p class="timeline-desc">
+                Expandiu seus conhecimentos através de projetos práticos envolvendo
+                inteligência artificial, engenharia reversa, automação, integração
+                entre software e hardware e desenvolvimento de soluções inovadoras
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+    </main>
+
+    <footer class="footer" role="contentinfo">
+      <p class="footer__copy">&copy; 2025 <span>[ Portfolio ]</span> — Todos os direitos reservados</p>
+      <p class="footer__copy" style="color: var(--gray-600); font-size: 0.65rem;">HTML5 · CSS3 · JavaScript</p>
+    </footer>
+  </div>
+
+  <!-- BOTTOM NAV MOBILE -->
+  <nav class="bottom-nav" role="navigation" aria-label="Navegação mobile">
+    <a href="../index.html" class="bottom-nav__item" aria-label="Home">
+      <div class="bottom-nav__icon">⌂</div>
+      <span class="bottom-nav__label">Home</span>
+    </a>
+    <a href="sobre.html" class="bottom-nav__item active" aria-label="Sobre">
+      <div class="bottom-nav__icon">◉</div>
+      <span class="bottom-nav__label">Sobre</span>
+    </a>
+    <a href="projetos.html" class="bottom-nav__item" aria-label="Projetos">
+      <div class="bottom-nav__icon">⊞</div>
+      <span class="bottom-nav__label">Projetos</span>
+    </a>
+    <a href="contato.html" class="bottom-nav__item" aria-label="Contato">
+      <div class="bottom-nav__icon">✉</div>
+      <span class="bottom-nav__label">Contato</span>
+    </a>
+  </nav>
+
+  <script src="../js/main.js"></script>
+  <style>
+    /* Timeline styles */
+    .timeline-item {
+      display: flex;
+      gap: 1.5rem;
+      margin-bottom: 2.5rem;
+      position: relative;
+    }
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: 7px;
+      top: 20px;
+      width: 1px;
+      height: calc(100% + 1rem);
+      background: linear-gradient(180deg, rgba(0,255,136,0.4), transparent);
+    }
+    .timeline-item:last-child::before { display: none; }
+    .timeline-dot {
+      width: 16px;
+      height: 16px;
+      min-width: 16px;
+      border: 1px solid var(--green);
+      background: var(--dark);
+      margin-top: 3px;
+      position: relative;
+    }
+    .timeline-dot::after {
+      content: '';
+      position: absolute;
+      inset: 3px;
+      background: var(--green);
+    }
+    .timeline-year {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      color: var(--green);
+      letter-spacing: 0.1em;
+      display: block;
+      margin-bottom: 0.3rem;
+    }
+    .timeline-title {
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 0.4rem;
+    }
+    .timeline-desc {
+      font-size: 0.9rem;
+      color: var(--gray-400);
+      line-height: 1.7;
+    }
+  </style>
+</body>
+</html>

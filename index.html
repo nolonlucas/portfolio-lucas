@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <!-- SEO META TAGS -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Portfólio de Desenvolvedora Front-End especializada em interfaces modernas, segurança digital e experiências web imersivas." />
+  <meta name="keywords" content="portfólio, front-end, desenvolvedor, HTML, CSS, JavaScript, cyber security, web design" />
+  <meta name="author" content="[Seu Nome]" />
+  <meta name="robots" content="index, follow" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="[ Portfolio ] — Desenvolvedora Front-End" />
+  <meta property="og:description" content="Portfólio de desenvolvimento web com temática Cyber Security." />
+  <meta property="og:type" content="website" />
+
+  <title>[ Portfolio ] — Home</title>
+
+  <!-- Favicon inline SVG -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23000'/><text y='22' font-size='18' fill='%2300ff88'>&gt;_</text></svg>" />
+
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <div id="boot-screen" class="boot-screen" aria-hidden="true">
+    <div class="boot-screen__container">
+      <div class="boot-screen__content">
+        <p class="boot-screen__line boot-screen__line--brand"></p>
+        <div class="boot-screen__log" aria-live="polite"></div>
+        <div class="boot-screen__progress-block">
+          <p class="boot-screen__label"></p>
+          <div class="boot-screen__progress-bar">
+            <span class="boot-screen__progress-fill"></span>
+          </div>
+        </div>
+        <p class="boot-screen__status"></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- CURSOR PERSONALIZADO -->
+  <div class="cursor" aria-hidden="true"></div>
+  <div class="cursor-ring" aria-hidden="true"></div>
+
+  <!-- FUNDO GRID CYBER -->
+  <div class="grid-bg" aria-hidden="true"></div>
+  <div class="scanlines" aria-hidden="true"></div>
+  <canvas id="matrix-canvas" aria-hidden="true"></canvas>
+
+  <!-- TRANSIÇÃO ENTRE PÁGINAS -->
+  <div class="page-transition" aria-hidden="true"></div>
+
+  <!-- NAVEGAÇÃO -->
+  <div class="nav__desktop-shell">
+    <nav class="nav" role="navigation" aria-label="Navegação principal">
+      <ul class="nav__links" role="list">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="pages/projetos.html">Projetos</a></li>
+        <li><a href="pages/contato.html">Contato</a></li>
+      </ul>
+    </nav>
+
+    <a href="pages/sobre.html" class="nav__profile-link" aria-label="Ir para Sobre">
+      <img src="Assets/profile_picture.png" alt="Foto de perfil" />
+    </a>
+  </div>
+
+  <nav class="nav" role="navigation" aria-label="Navegação principal">
+    <a href="index.html" class="nav__logo">[ Portfolio ]</a>
+
+    <div class="nav__mobile-shortcuts">
+      <a href="pages/projetos.html" class="nav__shortcut">[ Projetos ]</a>
+      <a href="pages/contato.html" class="nav__shortcut">[ Contato ]</a>
+    </div>
+
+    <button class="nav__toggle" aria-label="Abrir menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- PÁGINA WRAPPER -->
+  <div class="page-wrapper">
+
+    <!-- HERO SECTION -->
+    <main>
+      <section class="hero" id="home" aria-label="Seção inicial">
+        <div class="hero__content">
+
+          <div class="status-badge">
+            <span class="dot"></span>
+            disponível para projetos
+          </div>
+
+          <p class="hero__eyebrow">// Engenharia de Software</p>
+
+          <h1 class="hero__title">
+            <span>Bem Vindo,<br>me chamo<br></span>
+            <span class="name glitch" data-text="[ LUCAS ]">[ LUCAS ]</span><span class="bracket">.</span>
+          </h1>
+
+          <p class="hero__subtitle">
+            <span class="type-text"></span><span class="cursor-blink" aria-hidden="true"></span>
+          </p>
+
+          <p class="hero__desc">
+            Estudante de Engenharia de Software apaixonada por construir
+            sistemas escaláveis e experiências digitais que fazem sentido.
+            Meu foco é unir design e código com precisão.
+          </p>
+
+          <div class="hero__buttons">
+            <a href="pages/projetos.html" class="btn btn--primary">
+              <span class="btn-arrow">→</span>
+              <span>Ver Projetos</span>
+            </a>
+            <a href="pages/contato.html" class="btn btn--outline">
+              <span>Contato</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- FOTO DE PERFIL COM MOLDURA ANIMADA -->
+        <div class="hero__photo-wrap">
+          <div class="photo-wrapper">
+            <div class="photo-ring-loader">
+              <svg class="ring-svg" viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg">
+                <circle class="ring-track" cx="110" cy="110" r="104"></circle>
+                <circle class="ring-progress" cx="110" cy="110" r="104"></circle>
+              </svg>
+            </div>
+            <div class="photo-circle">
+              <img src="Assets/profile_picture.png" alt="Foto de perfil" class="photo-img" />
+            </div>
+          </div>
+
+          <!-- Terminal abaixo da foto (mantido) -->
+          <div class="hero__terminal" role="img" aria-label="Terminal decorativo">
+            <div class="terminal__bar">
+              <span class="terminal__dot terminal__dot--red"></span>
+              <span class="terminal__dot terminal__dot--yellow"></span>
+              <span class="terminal__dot terminal__dot--green"></span>
+              <span class="terminal__title">bash — portfolio</span>
+            </div>
+            <div class="terminal__body">
+              <div class="terminal__line" data-delay="400">
+                <span class="terminal__prompt">$</span>
+                <span class="terminal__cmd">whoami</span>
+              </div>
+              <div class="terminal__line terminal__out green" data-delay="700">Lucas</div>
+              <div class="terminal__line" data-delay="1100">
+                <span class="terminal__prompt">$</span>
+                <span class="terminal__cmd">system-info</span>
+              </div>
+              <div class="terminal__line terminal__out green" data-delay="1400">Status........ONLINE</div>
+              <div class="terminal__line terminal__out green" data-delay="1400">Learning......ACTIVE</div>
+              <div class="terminal__line terminal__out green" data-delay="1400">Creativity....100%</div>
+              <div class="terminal__line" data-delay="1800">
+                <span class="terminal__prompt">$</span>
+                <span class="terminal__cmd">philosophy.txt</span>
+              </div>
+              <div class="terminal__line terminal__out" data-delay="2100">Understand.</div>
+              <div class="terminal__line terminal__out" data-delay="2200">Create.</div>
+              <div class="terminal__line terminal__out" data-delay="2200">Innovate.</div>
+              <div class="terminal__line" data-delay="2600">
+                <span class="terminal__prompt">$</span>
+                <span class="terminal__cmd" style="animation: blink 1s step-end infinite;">_</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PROJECTS PREVIEW -->
+      <section id="projects-preview" class="projects-preview" aria-label="Prévia de projetos">
+        <div class="projects-preview__header">
+          <p class="section-label">// PROJECT DATABASE</p>
+          <h2 class="projects-preview__title">Projetos Criados</h2>
+          <p class="projects-preview__text">Alguns projetos selecionados do meu portfólio.</p>
+        </div>
+
+        <div class="projects-preview__list">
+          <div class="project-preview-block">
+            <div class="preview-terminal" data-terminal-index="0">
+              <div class="preview-terminal__bar">
+                <span class="terminal__dot terminal__dot--red"></span>
+                <span class="terminal__dot terminal__dot--yellow"></span>
+                <span class="terminal__dot terminal__dot--green"></span>
+                <span class="terminal__title">system — loading</span>
+              </div>
+              <div class="preview-terminal__body">
+                <div class="preview-terminal__line">
+                  <span class="preview-terminal__text"></span>
+                  <span class="preview-terminal__cursor" aria-hidden="true"></span>
+                </div>
+                <div class="preview-terminal__progress">
+                  <span class="preview-terminal__fill"></span>
+                </div>
+                <div class="preview-terminal__status"></div>
+              </div>
+            </div>
+
+            <article class="project-card project-card--hidden" data-project="aivideodubber" data-category="software">
+              <div class="project-card__preview">
+                <div class="project-card__media">
+                  <img
+                    class="project-thumb"
+                    src="Assets/projects/aivideodubber/thumb.webp"
+                    alt="Thumbnail do projeto AI Video Dubber"
+                    loading="lazy">
+                  <video
+                    class="project-video"
+                    preload="metadata"
+                    muted
+                    playsinline
+                    loop>
+                    <source
+                      src="Assets/projects/aivideodubber/preview.mp4"
+                      type="video/mp4">
+                  </video>
+                </div>
+              </div>
+              <div class="project-card__body">
+                <span class="project-card__tag">Software</span>
+                <h2 class="project-card__title">AI Video Dubber</h2>
+                <p class="project-card__desc">
+                  App desktop que baixa vídeos, transcreve a fala localmente, traduz
+                  o roteiro e gera narração dublada sincronizada, com mixagem sem perda de volume.
+                </p>
+                <div class="project-card__techs">
+                  <span class="tech-pill">Python</span>
+                  <span class="tech-pill">Flask</span>
+                  <span class="tech-pill">Faster-Whisper</span>
+                  <span class="tech-pill">Edge TTS</span>
+                </div>
+              </div>
+              <div class="project-card__links">
+            <a href="https://github.com/nolonlucas/ai-video-dubber" class="project-link-btn" target="_blank" rel="noopener" aria-label="Ver código" title="GitHub">⌥</a>
+          </div>
+            </article>
+          </div>
+
+          <div class="project-preview-block">
+            <div class="preview-terminal" data-terminal-index="1">
+              <div class="preview-terminal__bar">
+                <span class="terminal__dot terminal__dot--red"></span>
+                <span class="terminal__dot terminal__dot--yellow"></span>
+                <span class="terminal__dot terminal__dot--green"></span>
+                <span class="terminal__title">system — loading</span>
+              </div>
+              <div class="preview-terminal__body">
+                <div class="preview-terminal__line">
+                  <span class="preview-terminal__text"></span>
+                  <span class="preview-terminal__cursor" aria-hidden="true"></span>
+                </div>
+                <div class="preview-terminal__progress">
+                  <span class="preview-terminal__fill"></span>
+                </div>
+                <div class="preview-terminal__status"></div>
+              </div>
+            </div>
+
+            <article class="project-card project-card--hidden" data-project="aiproofbot" data-category="software">
+              <div class="project-card__preview">
+                <div class="project-card__media">
+                  <img
+                    class="project-thumb"
+                    src="Assets/projects/aiproofbot/thumb.webp"
+                    alt="Thumbnail do projeto AI Proof Bot"
+                    loading="lazy">
+                  <video
+                    class="project-video"
+                    preload="metadata"
+                    muted
+                    playsinline
+                    loop>
+                    <source
+                      src="Assets/projects/aiproofbot/preview.mp4"
+                      type="video/mp4">
+                  </video>
+                </div>
+              </div>
+              <div class="project-card__body">
+                <span class="project-card__tag">Software</span>
+                <h2 class="project-card__title">AI Proof Bot</h2>
+                <p class="project-card__desc">
+                  App desktop que lê questões em páginas web e usa um modelo de IA
+                  local via Ollama para identificar e marcar automaticamente a alternativa correta.
+                </p>
+                <div class="project-card__techs">
+                  <span class="tech-pill">Python</span>
+                  <span class="tech-pill">Ollama</span>
+                  <span class="tech-pill">Qwen2.5</span>
+                  <span class="tech-pill">Web Automation</span>
+                </div>
+              </div>
+              <div class="project-card__links">
+            <a href="https://github.com/nolonlucas/bot-provas-ia" class="project-link-btn" target="_blank" rel="noopener" aria-label="Ver código" title="GitHub">⌥</a>
+          </div>
+            </article>
+          </div>
+
+          <div class="project-preview-block">
+            <div class="preview-terminal" data-terminal-index="2">
+              <div class="preview-terminal__bar">
+                <span class="terminal__dot terminal__dot--red"></span>
+                <span class="terminal__dot terminal__dot--yellow"></span>
+                <span class="terminal__dot terminal__dot--green"></span>
+                <span class="terminal__title">system — loading</span>
+              </div>
+              <div class="preview-terminal__body">
+                <div class="preview-terminal__line">
+                  <span class="preview-terminal__text"></span>
+                  <span class="preview-terminal__cursor" aria-hidden="true"></span>
+                </div>
+                <div class="preview-terminal__progress">
+                  <span class="preview-terminal__fill"></span>
+                </div>
+                <div class="preview-terminal__status"></div>
+              </div>
+            </div>
+
+            <article class="project-card project-card--hidden" data-project="farmaciatech" data-category="website">
+              <div class="project-card__preview">
+                <div class="project-card__media">
+                  <img
+                    class="project-thumb"
+                    src="Assets/projects/farmaciatech/thumb.webp"
+                    alt="Thumbnail do projeto FarmáciaTech"
+                    loading="lazy">
+                  <video
+                    class="project-video"
+                    preload="metadata"
+                    muted
+                    playsinline
+                    loop>
+                    <source
+                      src="Assets/projects/farmaciatech/preview.mp4"
+                      type="video/mp4">
+                  </video>
+                </div>
+              </div>
+              <div class="project-card__body">
+                <span class="project-card__tag">Website</span>
+                <h2 class="project-card__title">FarmáciaTech</h2>
+                <p class="project-card__desc">
+                  E-commerce ilustrativo (projeto de portfólio, sem vendas reais) com
+                  catálogo, carrinho, checkout simulado e painel de estoque.
+                </p>
+                <div class="project-card__techs">
+                  <span class="tech-pill">HTML5</span>
+                  <span class="tech-pill">CSS3</span>
+                  <span class="tech-pill">JavaScript</span>
+                  <span class="tech-pill">sessionStorage</span>
+                </div>
+              </div>
+              <div class="project-card__links">
+            <a href="https://farmacia-site-tau.vercel.app" class="project-link-btn" target="_blank" rel="noopener" aria-label="Visitar Website" title="Visitar Website">↗</a>
+          </div>
+            </article>
+          </div>
+        </div>
+
+        <div class="projects-preview__actions">
+          <a href="pages/projetos.html" class="btn btn--outline">
+            <span>Ver todos os projetos</span>
+            <span class="btn-arrow">→</span>
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer" role="contentinfo">
+      <p class="footer__copy">
+        &copy; 2025 <span>[ Portfolio ]</span> — Todos os direitos reservados
+      </p>
+      <p class="footer__copy" style="color: var(--gray-600); font-size: 0.65rem;">
+        Desenvolvido com HTML5 · CSS3 · JavaScript
+      </p>
+    </footer>
+
+  </div><!-- /page-wrapper -->
+
+  <!-- BOTTOM NAV MOBILE -->
+  <nav class="bottom-nav" role="navigation" aria-label="Navegação mobile">
+    <a href="index.html" class="bottom-nav__item active" aria-label="Home">
+      <div class="bottom-nav__icon">⌂</div>
+      <span class="bottom-nav__label">Home</span>
+    </a>
+    <a href="pages/sobre.html" class="bottom-nav__item" aria-label="Sobre">
+      <div class="bottom-nav__icon">◉</div>
+      <span class="bottom-nav__label">Sobre</span>
+    </a>
+    <a href="pages/projetos.html" class="bottom-nav__item" aria-label="Projetos">
+      <div class="bottom-nav__icon">⊞</div>
+      <span class="bottom-nav__label">Projetos</span>
+    </a>
+    <a href="pages/contato.html" class="bottom-nav__item" aria-label="Contato">
+      <div class="bottom-nav__icon">✉</div>
+      <span class="bottom-nav__label">Contato</span>
+    </a>
+  </nav>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

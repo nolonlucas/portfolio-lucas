@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Detalhes do projeto selecionado com preview de vídeo, descrição, funcionalidades e arquitetura." />
+  <meta name="keywords" content="projeto, detalhes, portfólio, dashboard, segurança, web" />
+  <meta name="author" content="[Seu Nome]" />
+  <meta name="robots" content="index, follow" />
+
+  <meta property="og:title" content="Projeto — [ Portfolio ]" />
+  <meta property="og:description" content="Detalhes do projeto exibidos em uma página única de portfólio." />
+
+  <title>Projeto — [ Portfolio ]</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23000'/><text y='22' font-size='18' fill='%2300ff88'>&gt;_</text></svg>" />
+
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+  <div class="cursor" aria-hidden="true"></div>
+  <div class="cursor-ring" aria-hidden="true"></div>
+  <div class="grid-bg" aria-hidden="true"></div>
+  <div class="scanlines" aria-hidden="true"></div>
+  <canvas id="matrix-canvas" aria-hidden="true"></canvas>
+  <div class="page-transition" aria-hidden="true"></div>
+
+  <div class="nav__desktop-shell">
+    <nav class="nav" role="navigation" aria-label="Navegação principal">
+      <ul class="nav__links" role="list">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="projetos.html">Projetos</a></li>
+        <li><a href="contato.html">Contato</a></li>
+      </ul>
+    </nav>
+
+    <a href="sobre.html" class="nav__profile-link" aria-label="Ir para Sobre">
+      <img src="../Assets/profile_picture.png" alt="Foto de perfil" />
+    </a>
+  </div>
+
+  <nav class="nav" role="navigation" aria-label="Navegação principal">
+    <a href="../index.html" class="nav__logo" aria-label="Ir para o início">[ Portfolio ]</a>
+
+    <div class="nav__mobile-shortcuts">
+      <a href="projetos.html" class="nav__shortcut">[ Projetos ]</a>
+      <a href="contato.html" class="nav__shortcut">[ Contato ]</a>
+    </div>
+
+    <button class="nav__toggle" aria-label="Abrir menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <div class="page-wrapper">
+    <main>
+      <div id="project-detail-content">
+        <section class="project-detail__hero section reveal">
+          <div class="project-detail__hero-video">
+            <video id="project-hero-video" autoplay muted playsinline loop preload="metadata"></video>
+          </div>
+
+          <div class="project-detail__hero-info">
+            <p class="section-label" id="project-section-label">01 — Projeto</p>
+            <h1 class="project-detail__hero-title" id="project-title">Carregando...</h1>
+            <p class="project-detail__hero-subtitle" id="project-subtitle">Aguarde enquanto carregamos os detalhes do projeto selecionado.</p>
+
+            <div class="project-detail__meta" id="project-meta"></div>
+            <div class="project-detail__techs" id="project-techs"></div>
+            <div class="project-detail__actions">
+              <a id="project-github" class="btn btn--primary" target="_blank" rel="noopener" aria-label="GitHub">GitHub</a>
+            </div>
+          </div>
+        </section>
+
+        <section class="project-detail__about section reveal">
+          <p class="section-label">02 — Sobre</p>
+          <h2>Sobre o projeto</h2>
+          <p class="project-detail__about-text" id="project-about"></p>
+        </section>
+
+        <section class="project-detail__navigation section reveal">
+          <a id="project-previous" class="btn btn--outline">← Projeto Anterior</a>
+          <a id="project-next" class="btn btn--outline">Próximo Projeto →</a>
+        </section>
+
+        <section class="project-detail__other section reveal">
+          <p class="section-label">03 — Outros Projetos</p>
+          <h2>Outros projetos</h2>
+          <div class="projects-grid" id="other-projects-grid"></div>
+        </section>
+      </div>
+
+      <div class="project-detail__not-found" id="project-not-found" style="display:none;">
+        <p class="section-label">Projeto não encontrado</p>
+        <h1>Ops, este projeto não está disponível.</h1>
+        <p>O projeto solicitado não existe ou foi removido. Retorne à lista de projetos para continuar explorando.</p>
+        <a href="projetos.html" class="btn btn--outline">Voltar aos Projetos</a>
+      </div>
+    </main>
+
+    <footer class="footer" role="contentinfo">
+      <p class="footer__copy">&copy; 2025 <span>[ Portfolio ]</span> — Todos os direitos reservados</p>
+      <p class="footer__copy" style="color: var(--gray-600); font-size: 0.65rem;">HTML5 · CSS3 · JavaScript</p>
+    </footer>
+  </div>
+
+  <nav class="bottom-nav" role="navigation" aria-label="Navegação mobile">
+    <a href="../index.html" class="bottom-nav__item" aria-label="Home">
+      <div class="bottom-nav__icon">⌂</div>
+      <span class="bottom-nav__label">Home</span>
+    </a>
+    <a href="sobre.html" class="bottom-nav__item" aria-label="Sobre">
+      <div class="bottom-nav__icon">◉</div>
+      <span class="bottom-nav__label">Sobre</span>
+    </a>
+    <a href="projetos.html" class="bottom-nav__item" aria-label="Projetos">
+      <div class="bottom-nav__icon">⊞</div>
+      <span class="bottom-nav__label">Projetos</span>
+    </a>
+    <a href="contato.html" class="bottom-nav__item" aria-label="Contato">
+      <div class="bottom-nav__icon">✉</div>
+      <span class="bottom-nav__label">Contato</span>
+    </a>
+  </nav>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>

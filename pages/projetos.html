@@ -1,0 +1,497 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <!-- SEO META TAGS -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Projetos desenvolvidos: aplicações web, interfaces responsivas e sistemas com HTML5, CSS3, JavaScript e React." />
+  <meta name="keywords" content="projetos, portfólio, front-end, web apps, React, JavaScript, desenvolvimento" />
+  <meta name="author" content="[Seu Nome]" />
+  <meta name="robots" content="index, follow" />
+
+  <meta property="og:title" content="Projetos — [ Portfolio ]" />
+  <meta property="og:description" content="Veja os projetos desenvolvidos com HTML5, CSS3 e JavaScript." />
+
+  <title>Projetos — [ Portfolio ]</title>
+
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23000'/><text y='22' font-size='18' fill='%2300ff88'>&gt;_</text></svg>" />
+
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+
+  <div class="cursor" aria-hidden="true"></div>
+  <div class="cursor-ring" aria-hidden="true"></div>
+  <div class="grid-bg" aria-hidden="true"></div>
+  <div class="scanlines" aria-hidden="true"></div>
+  <!-- MATRIX RAIN CANVAS -->
+  <canvas id="matrix-canvas" aria-hidden="true"></canvas>
+  <div class="page-transition" aria-hidden="true"></div>
+
+  <!-- NAVEGAÇÃO -->
+  <div class="nav__desktop-shell">
+    <nav class="nav" role="navigation" aria-label="Navegação principal">
+      <ul class="nav__links" role="list">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="projetos.html">Projetos</a></li>
+        <li><a href="contato.html">Contato</a></li>
+      </ul>
+    </nav>
+
+    <a href="sobre.html" class="nav__profile-link" aria-label="Ir para Sobre">
+      <img src="../Assets/profile_picture.png" alt="Foto de perfil" />
+    </a>
+  </div>
+
+  <nav class="nav" role="navigation" aria-label="Navegação principal">
+    <a href="../index.html" class="nav__logo" aria-label="Ir para o início">[ Portfolio ]</a>
+
+    <div class="nav__mobile-shortcuts">
+      <a href="projetos.html" class="nav__shortcut">[ Projetos ]</a>
+      <a href="contato.html" class="nav__shortcut">[ Contato ]</a>
+    </div>
+
+    <button class="nav__toggle" aria-label="Abrir menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <div class="page-wrapper">
+    <main>
+
+      <!-- HEADER PROJETOS -->
+      <div class="projects-header">
+        <p class="section-label reveal">02 — Projetos</p>
+        <h1 style="font-family:var(--font-display); font-size:clamp(2.5rem,6vw,5rem); font-weight:900; margin-bottom:1rem;" class="reveal reveal-delay-1">
+          O que<br><span style="color:var(--green);">construí.</span>
+        </h1>
+        <p style="font-family:var(--font-mono); font-size:0.85rem; color:var(--gray-400); max-width:480px;" class="reveal reveal-delay-2">
+          Alguns dos meus projetos mais recentes — de interfaces a sistemas completos.
+        </p>
+
+        <!-- FILTRO -->
+        <div class="filter-row reveal reveal-delay-3" style="display:flex; gap:0.75rem; margin-top:2rem; flex-wrap:wrap;">
+          <button class="filter-btn active" data-filter="all">Todos</button>
+          <button class="filter-btn" data-filter="software">Software</button>
+          <button class="filter-btn" data-filter="website">Website</button>
+        </div>
+      </div>
+
+      <!-- GRID DE PROJETOS -->
+      <div class="projects-grid" id="projects-grid">
+        <!-- Projeto 1 -->
+        <article class="project-card reveal" data-project="gifdisplaycontroller" data-category="software">
+          <div class="project-card__preview">
+            <div class="project-card__media">
+              <img
+                class="project-thumb"
+                src="../Assets/projects/gifdisplaycontroller/thumb.webp"
+                alt="Thumbnail do projeto GIF Display Controller"
+                loading="lazy">
+              <video
+                class="project-video"
+                preload="metadata"
+                muted
+                playsinline
+                loop>
+                <source
+                  src="../Assets/projects/gifdisplaycontroller/preview.mp4"
+                  type="video/mp4">
+              </video>
+            </div>
+          </div>
+          <div class="project-card__body">
+            <span class="project-card__tag">Software</span>
+            <h2 class="project-card__title">GIF Display Controller</h2>
+            <p class="project-card__desc">
+              App desktop para controlar uma tela secundária USB via serial,
+              convertendo e exibindo GIFs animados em tempo real.
+            </p>
+            <div class="project-card__techs">
+              <span class="tech-pill">Python</span>
+              <span class="tech-pill">CustomTkinter</span>
+              <span class="tech-pill">Pillow</span>
+              <span class="tech-pill">PySerial</span>
+            </div>
+          </div>
+          <div class="project-card__links">
+            <a href="https://github.com/nolonlucas/GIFS-in-3.5-Inch-IPS-USB-Scren" class="project-link-btn" target="_blank" rel="noopener" aria-label="Ver código" title="GitHub">⌥</a>
+          </div>
+        </article>
+
+        <!-- Projeto 2 -->
+        <article class="project-card reveal reveal-delay-1" data-project="farmaciatech" data-category="website">
+          <div class="project-card__preview">
+            <div class="project-card__media">
+              <img
+                class="project-thumb"
+                src="../Assets/projects/farmaciatech/thumb.webp"
+                alt="Thumbnail do projeto FarmáciaTech"
+                loading="lazy">
+              <video
+                class="project-video"
+                preload="metadata"
+                muted
+                playsinline
+                loop>
+                <source
+                  src="../Assets/projects/farmaciatech/preview.mp4"
+                  type="video/mp4">
+              </video>
+            </div>
+          </div>
+          <div class="project-card__body">
+            <span class="project-card__tag">Website</span>
+            <h2 class="project-card__title">FarmáciaTech</h2>
+            <p class="project-card__desc">
+              E-commerce ilustrativo (projeto de portfólio, sem vendas reais) com
+              catálogo, carrinho, checkout simulado e painel de estoque.
+            </p>
+            <div class="project-card__techs">
+              <span class="tech-pill">HTML5</span>
+              <span class="tech-pill">CSS3</span>
+              <span class="tech-pill">JavaScript</span>
+              <span class="tech-pill">sessionStorage</span>
+            </div>
+          </div>
+          <div class="project-card__links">
+            <a href="https://farmacia-site-tau.vercel.app" class="project-link-btn" target="_blank" rel="noopener" aria-label="Visitar Website" title="Visitar Website">↗</a>
+          </div>
+        </article>
+
+        <!-- Projeto 3 -->
+        <article class="project-card reveal reveal-delay-2" data-project="cyberportal" data-category="website">
+          <div class="project-card__preview">
+            <div class="project-card__media">
+              <img
+                class="project-thumb"
+                src="../Assets/projects/cyberportal/thumb.webp"
+                alt="Thumbnail do projeto CyberPortal"
+                loading="lazy">
+              <video
+                class="project-video"
+                preload="metadata"
+                muted
+                playsinline
+                loop>
+                <source
+                  src="../Assets/projects/cyberportal/preview.mp4"
+                  type="video/mp4">
+              </video>
+            </div>
+          </div>
+          <div class="project-card__body">
+            <span class="project-card__tag">Website</span>
+            <h2 class="project-card__title">CyberPortal</h2>
+            <p class="project-card__desc">
+              Interface de dashboard para análise de vulnerabilidades com
+              gráficos em tempo real e relatórios exportáveis em PDF.
+            </p>
+            <div class="project-card__techs">
+              <span class="tech-pill">HTML5</span>
+              <span class="tech-pill">CSS3</span>
+              <span class="tech-pill">Chart.js</span>
+              <span class="tech-pill">JavaScript</span>
+            </div>
+          </div>
+          <div class="project-card__links">
+            <a href="#" class="project-link-btn" target="_blank" rel="noopener" aria-label="Ver código" title="GitHub">⌥</a>
+          </div>
+        </article>
+
+        <!-- Projeto 4 -->
+        <article class="project-card reveal reveal-delay-3" data-project="forzapackagepatcher" data-category="software">
+          <div class="project-card__preview">
+            <div class="project-card__media">
+              <img
+                class="project-thumb"
+                src="../Assets/projects/forzapackagepatcher/thumb.webp"
+                alt="Thumbnail do projeto Forza Package Patcher"
+                loading="lazy">
+              <video
+                class="project-video"
+                preload="metadata"
+                muted
+                playsinline
+                loop>
+                <source
+                  src="../Assets/projects/forzapackagepatcher/preview.mp4"
+                  type="video/mp4">
+              </video>
+            </div>
+          </div>
+          <div class="project-card__body">
+            <span class="project-card__tag">Software</span>
+            <h2 class="project-card__title">Forza Package Patcher</h2>
+            <p class="project-card__desc">
+              Ferramentas desktop para substituição de assets visuais em jogos da
+              franquia Forza, com leitura/escrita binária própria, validação por
+              checksum e backup automático.
+            </p>
+            <div class="project-card__techs">
+              <span class="tech-pill">Python</span>
+              <span class="tech-pill">Tkinter</span>
+              <span class="tech-pill">Zlib</span>
+              <span class="tech-pill">Struct</span>
+            </div>
+          </div>
+          <div class="project-card__links">
+            <a href="https://github.com/nolonlucas/forza-package-patcher" class="project-link-btn" target="_blank" rel="noopener" aria-label="Ver código" title="GitHub">⌥</a>
+          </div>
+        </article>
+
+        <!-- Projeto 5 -->
+        <article class="project-card reveal" data-project="aiproofbot" data-category="software">
+          <div class="project-card__preview">
+            <div class="project-card__media">
+              <img
+                class="project-thumb"
+                src="../Assets/projects/aiproofbot/thumb.webp"
+                alt="Thumbnail do projeto AI Proof Bot"
+                loading="lazy">
+              <video
+                class="project-video"
+                preload="metadata"
+                muted
+                playsinline
+                loop>
+                <source
+                  src="../Assets/projects/aiproofbot/preview.mp4"
+                  type="video/mp4">
+              </video>
+            </div>
+          </div>
+          <div class="project-card__body">
+            <span class="project-card__tag">Software</span>
+            <h2 class="project-card__title">AI Proof Bot</h2>
+            <p class="project-card__desc">
+              Aplicação desktop com IA local que lê questões em páginas web, identifica
+              a alternativa correta e marca a resposta automaticamente.
+            </p>
+            <div class="project-card__techs">
+              <span class="tech-pill">Python</span>
+              <span class="tech-pill">Ollama</span>
+              <span class="tech-pill">Qwen2.5</span>
+              <span class="tech-pill">Web Automation</span>
+            </div>
+          </div>
+          <div class="project-card__links">
+            <a href="https://github.com/nolonlucas/bot-provas-ia" class="project-link-btn" target="_blank" rel="noopener" aria-label="Ver código" title="GitHub">⌥</a>
+          </div>
+        </article>
+
+        <!-- Projeto 6 -->
+        <article class="project-card reveal reveal-delay-1" data-project="aivideodubber" data-category="software">
+          <div class="project-card__preview">
+            <div class="project-card__media">
+              <img
+                class="project-thumb"
+                src="../Assets/projects/aivideodubber/thumb.webp"
+                alt="Thumbnail do projeto AI Video Dubber"
+                loading="lazy">
+              <video
+                class="project-video"
+                preload="metadata"
+                muted
+                playsinline
+                loop>
+                <source
+                  src="../Assets/projects/aivideodubber/preview.mp4"
+                  type="video/mp4">
+              </video>
+            </div>
+          </div>
+          <div class="project-card__body">
+            <span class="project-card__tag">Software</span>
+            <h2 class="project-card__title">AI Video Dubber</h2>
+            <p class="project-card__desc">
+              Aplicativo desktop que baixa, transcreve, traduz e dubla vídeos
+              automaticamente com IA, sincronizando a narração ao tempo original
+              do vídeo e exportando o resultado pronto em poucos cliques.
+            </p>
+            <div class="project-card__techs">
+              <span class="tech-pill">Python</span>
+              <span class="tech-pill">Flask</span>
+              <span class="tech-pill">Pywebview</span>
+              <span class="tech-pill">Faster-Whisper</span>
+            </div>
+          </div>
+          <div class="project-card__links">
+            <a href="https://github.com/nolonlucas/ai-video-dubber" class="project-link-btn" target="_blank" rel="noopener" aria-label="Ver código" title="GitHub">⌥</a>
+          </div>
+        </article>
+
+        <!-- Projeto 7 -->
+        <article class="project-card reveal reveal-delay-2" data-project="instagramautocommentbot" data-category="software">
+          <div class="project-card__preview">
+            <div class="project-card__media">
+              <img
+                class="project-thumb"
+                src="../Assets/projects/instagramautocommentbot/thumb.webp"
+                alt="Thumbnail do projeto Instagram Auto Comment Bot"
+                loading="lazy">
+              <video
+                class="project-video"
+                preload="metadata"
+                muted
+                playsinline
+                loop>
+                <source
+                  src="../Assets/projects/instagramautocommentbot/preview.mp4"
+                  type="video/mp4">
+              </video>
+            </div>
+          </div>
+          <div class="project-card__body">
+            <span class="project-card__tag">Software</span>
+            <h2 class="project-card__title">Instagram Auto Comment Bot</h2>
+            <p class="project-card__desc">
+              App desktop que automatiza comentários no Instagram, marcando seguidores
+              automaticamente com simulação de digitação e licenciamento por key temporária.
+            </p>
+            <div class="project-card__techs">
+              <span class="tech-pill">Python</span>
+              <span class="tech-pill">PyQt6</span>
+              <span class="tech-pill">Instagrapi</span>
+              <span class="tech-pill">HMAC</span>
+            </div>
+          </div>
+          <div class="project-card__links">
+            <a href="https://github.com/nolonlucas/bot_instagram_auto" class="project-link-btn" target="_blank" rel="noopener" aria-label="Ver código" title="GitHub">⌥</a>
+          </div>
+        </article>
+
+
+        <!-- Projeto 8 -->
+        <article class="project-card reveal reveal-delay-3" data-project="yolov3playerdetector" data-category="software">
+          <div class="project-card__preview">
+            <div class="project-card__media">
+              <img
+                class="project-thumb"
+                src="../Assets/projects/yolov3playerdetector/thumb.webp"
+                alt="Thumbnail do projeto YOLOv3 Player Detector"
+                loading="lazy">
+              <video
+                class="project-video"
+                preload="metadata"
+                muted
+                playsinline
+                loop>
+                <source
+                  src="../Assets/projects/yolov3playerdetector/preview.mp4"
+                  type="video/mp4">
+              </video>
+            </div>
+          </div>
+          <div class="project-card__body">
+            <span class="project-card__tag">Software</span>
+            <h2 class="project-card__title">YOLOv3 Player Detector</h2>
+            <p class="project-card__desc">
+              Sistema de detecção de objetos em tempo real com YOLOv3 Tiny e OpenCV DNN,
+              capturando tela via Windows GDI e renderizando bounding boxes com
+              seleção automática de backend (CUDA/OpenCL/CPU).
+            </p>
+            <div class="project-card__techs">
+              <span class="tech-pill">C++</span>
+              <span class="tech-pill">OpenCV</span>
+              <span class="tech-pill">YOLOv3</span>
+              <span class="tech-pill">CUDA</span>
+            </div>
+          </div>
+          <div class="project-card__links">
+            <a href="https://github.com/nolonlucas/yolov3-player-detector" class="project-link-btn" target="_blank" rel="noopener" aria-label="Ver código" title="GitHub">⌥</a>
+          </div>
+        </article>
+
+      </div><!-- /projects-grid -->
+
+    </main>
+
+    <footer class="footer" role="contentinfo">
+      <p class="footer__copy">&copy; 2025 <span>[ Portfolio ]</span> — Todos os direitos reservados</p>
+      <p class="footer__copy" style="color: var(--gray-600); font-size: 0.65rem;">HTML5 · CSS3 · JavaScript</p>
+    </footer>
+  </div>
+
+  <!-- BOTTOM NAV MOBILE -->
+  <nav class="bottom-nav" role="navigation" aria-label="Navegação mobile">
+    <a href="../index.html" class="bottom-nav__item" aria-label="Home">
+      <div class="bottom-nav__icon">⌂</div>
+      <span class="bottom-nav__label">Home</span>
+    </a>
+    <a href="sobre.html" class="bottom-nav__item" aria-label="Sobre">
+      <div class="bottom-nav__icon">◉</div>
+      <span class="bottom-nav__label">Sobre</span>
+    </a>
+    <a href="projetos.html" class="bottom-nav__item active" aria-label="Projetos">
+      <div class="bottom-nav__icon">⊞</div>
+      <span class="bottom-nav__label">Projetos</span>
+    </a>
+    <a href="contato.html" class="bottom-nav__item" aria-label="Contato">
+      <div class="bottom-nav__icon">✉</div>
+      <span class="bottom-nav__label">Contato</span>
+    </a>
+  </nav>
+
+  <script src="../js/main.js"></script>
+  <script>
+    /* === FILTRO DE PROJETOS === */
+    (function() {
+      const btns  = document.querySelectorAll('.filter-btn');
+      const cards = document.querySelectorAll('.project-card');
+
+      btns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          btns.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+
+          const filter = btn.dataset.filter;
+          cards.forEach(card => {
+            const show = filter === 'all' || card.dataset.category === filter;
+            card.style.transition = 'opacity 0.3s ease, transform 0.3s cubic-bezier(0.19,1,0.22,1)';
+            card.style.pointerEvents = show ? 'all' : 'none';
+
+            if (show) {
+              card.style.display = '';
+              requestAnimationFrame(() => {
+                card.style.opacity   = '1';
+                card.style.transform = 'scale(1)';
+              });
+            } else {
+              card.style.opacity   = '0';
+              card.style.transform = 'scale(0.97)';
+              setTimeout(() => {
+                if (card.dataset.category !== filter) {
+                  card.style.display = 'none';
+                }
+              }, 300);
+            }
+          });
+        });
+      });
+    })();
+  </script>
+
+  <style>
+    .filter-btn {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.5rem 1.1rem;
+      background: transparent;
+      color: var(--gray-400);
+      border: 1px solid rgba(255,255,255,0.1);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .filter-btn:hover,
+    .filter-btn.active {
+      color: var(--green);
+      border-color: rgba(0,255,136,0.4);
+      background: rgba(0,255,136,0.05);
+    }
+  </style>
+</body>
+</html>
+

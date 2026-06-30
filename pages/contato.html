@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <!-- SEO META TAGS -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Entre em contato para propostas, projetos ou apenas para trocar uma ideia sobre desenvolvimento web e tecnologia." />
+  <meta name="keywords" content="contato, portfolio, desenvolvedor, front-end, freelance, projetos web" />
+  <meta name="author" content="[Seu Nome]" />
+  <meta name="robots" content="index, follow" />
+
+  <meta property="og:title" content="Contato — [ Portfolio ]" />
+  <meta property="og:description" content="Vamos conversar sobre seu próximo projeto." />
+
+  <title>Contato — [ Portfolio ]</title>
+
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23000'/><text y='22' font-size='18' fill='%2300ff88'>&gt;_</text></svg>" />
+
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+
+  <div class="cursor" aria-hidden="true"></div>
+  <div class="cursor-ring" aria-hidden="true"></div>
+  <div class="grid-bg" aria-hidden="true"></div>
+  <div class="scanlines" aria-hidden="true"></div>
+  <!-- MATRIX RAIN CANVAS -->
+  <canvas id="matrix-canvas" aria-hidden="true"></canvas>
+  <div class="page-transition" aria-hidden="true"></div>
+
+  <!-- NAVEGAÇÃO -->
+  <div class="nav__desktop-shell">
+    <nav class="nav" role="navigation" aria-label="Navegação principal">
+      <ul class="nav__links" role="list">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="projetos.html">Projetos</a></li>
+        <li><a href="contato.html">Contato</a></li>
+      </ul>
+    </nav>
+
+    <a href="sobre.html" class="nav__profile-link" aria-label="Ir para Sobre">
+      <img src="../Assets/profile_picture.png" alt="Foto de perfil" />
+    </a>
+  </div>
+
+  <nav class="nav" role="navigation" aria-label="Navegação principal">
+    <a href="../index.html" class="nav__logo" aria-label="Ir para o início">[ Portfolio ]</a>
+
+    <div class="nav__mobile-shortcuts">
+      <a href="projetos.html" class="nav__shortcut">[ Projetos ]</a>
+      <a href="contato.html" class="nav__shortcut">[ Contato ]</a>
+    </div>
+
+    <button class="nav__toggle" aria-label="Abrir menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <div class="page-wrapper">
+    <main>
+
+      <section class="contact-section" id="contato" aria-label="Seção de contato">
+        <div style="width:100%;">
+
+          <p class="section-label reveal">04 — Contato</p>
+
+          <div class="contact-grid">
+
+            <!-- INFO -->
+            <div class="contact-info">
+              <h1 class="reveal reveal-delay-1">
+                Gostou do meu Trabalho?<br><span class="highlight">Vamos conversar!</span>
+              </h1>
+
+              <p class="reveal reveal-delay-2">
+                Estou disponível para projetos freelance, oportunidades de
+                estágio ou apenas para trocar uma ideia sobre tecnologia.
+                Me manda uma mensagem!
+              </p>
+
+              <!-- LINKS DE CONTATO -->
+              <div class="contact-links reveal reveal-delay-3">
+
+                <a href="mailto:lcdias75@gmail.com" class="contact-link-item" aria-label="Enviar e-mail">
+                  <span class="icon">✉</span>
+                  <span>lcdias75@gmail.com</span>
+                </a>
+
+                <a href="https://github.com" target="_blank" rel="noopener" class="contact-link-item" aria-label="GitHub">
+                  <span class="icon">⌥</span>
+                  <span>github.com/seuusuario</span>
+                </a>
+
+                <a href="https://linkedin.com" target="_blank" rel="noopener" class="contact-link-item" aria-label="LinkedIn">
+                  <span class="icon">in</span>
+                  <span>linkedin.com/in/seuperfil</span>
+                </a>
+
+                <a href="https://wa.me/5521988841439" target="_blank" rel="noopener" class="contact-link-item" aria-label="WhatsApp">
+                  <span class="icon">◎</span>
+                  <span>Conversar no WhatsApp</span>
+                </a>
+
+              </div>
+            </div>
+
+            <!-- FORMULÁRIO COM VALIDAÇÃO JS -->
+            <div class="reveal reveal-delay-2">
+
+              <!-- Mensagem de sucesso (oculta por padrão) -->
+              <div class="form-success" role="alert" aria-live="polite">
+                <p style="font-size:1.5rem; margin-bottom:0.5rem;">✓</p>
+                <p>Mensagem enviada com sucesso!</p>
+                <p style="color:var(--gray-400); font-size:0.75rem; margin-top:0.5rem;">Responderei em breve.</p>
+              </div>
+
+              <!-- FORMULÁRIO -->
+              <form
+                id="contact-form"
+                class="contact-form"
+                novalidate
+                aria-label="Formulário de contato"
+              >
+
+                <!-- NOME -->
+                <div class="form-group">
+                  <label class="form-label" for="name">Nome</label>
+                  <input
+                    class="form-input"
+                    type="text"
+                    id="name"
+                    name="name"
+                    placeholder="Seu nome completo"
+                    autocomplete="name"
+                    aria-describedby="name-error"
+                    required
+                  />
+                  <span class="form-error" id="name-error" role="alert"></span>
+                </div>
+
+                <!-- E-MAIL -->
+                <div class="form-group">
+                  <label class="form-label" for="email">E-mail</label>
+                  <input
+                    class="form-input"
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="seu@email.com"
+                    autocomplete="email"
+                    aria-describedby="email-error"
+                    required
+                  />
+                  <span class="form-error" id="email-error" role="alert"></span>
+                </div>
+
+                <!-- ASSUNTO -->
+                <div class="form-group">
+                  <label class="form-label" for="subject">Assunto</label>
+                  <input
+                    class="form-input"
+                    type="text"
+                    id="subject"
+                    name="subject"
+                    placeholder="Ex: Proposta de projeto"
+                    aria-describedby="subject-error"
+                    required
+                  />
+                  <span class="form-error" id="subject-error" role="alert"></span>
+                </div>
+
+                <!-- MENSAGEM -->
+                <div class="form-group">
+                  <label class="form-label" for="message">Mensagem</label>
+                  <textarea
+                    class="form-textarea"
+                    id="message"
+                    name="message"
+                    rows="5"
+                    placeholder="Escreva sua mensagem..."
+                    aria-describedby="message-error"
+                    required
+                  ></textarea>
+                  <span class="form-error" id="message-error" role="alert"></span>
+                </div>
+
+                <!-- BOTÃO ENVIAR -->
+                <button type="submit" class="btn btn--primary" style="width:100%; justify-content:center;">
+                  <span class="btn-arrow">→</span>
+                  <span>Enviar Mensagem</span>
+                </button>
+
+              </form>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <footer class="footer" role="contentinfo">
+      <p class="footer__copy">&copy; 2025 <span>[ Portfolio ]</span> — Todos os direitos reservados</p>
+      <p class="footer__copy" style="color: var(--gray-600); font-size: 0.65rem;">HTML5 · CSS3 · JavaScript</p>
+    </footer>
+  </div>
+
+  <!-- BOTTOM NAV MOBILE -->
+  <nav class="bottom-nav" role="navigation" aria-label="Navegação mobile">
+    <a href="../index.html" class="bottom-nav__item" aria-label="Home">
+      <div class="bottom-nav__icon">⌂</div>
+      <span class="bottom-nav__label">Home</span>
+    </a>
+    <a href="sobre.html" class="bottom-nav__item" aria-label="Sobre">
+      <div class="bottom-nav__icon">◉</div>
+      <span class="bottom-nav__label">Sobre</span>
+    </a>
+    <a href="projetos.html" class="bottom-nav__item" aria-label="Projetos">
+      <div class="bottom-nav__icon">⊞</div>
+      <span class="bottom-nav__label">Projetos</span>
+    </a>
+    <a href="contato.html" class="bottom-nav__item active" aria-label="Contato">
+      <div class="bottom-nav__icon">✉</div>
+      <span class="bottom-nav__label">Contato</span>
+    </a>
+  </nav>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>
