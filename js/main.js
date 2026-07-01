@@ -174,86 +174,29 @@ function initBottomNav() {
   /* Intercepta cliques */
   items.forEach((item) => {
     item.addEventListener('click', (e) => {
-      e.preventDefault();
       const href = item.getAttribute('href');
       if (!href) return;
+      e.preventDefault();
 
-      /* Atualiza ativo e move indicador imediatamente */
+      /* Atualiza ativo e move indicador imediatamente (feedback visual) */
       items.forEach(i => i.classList.remove('active'));
       item.classList.add('active');
       requestAnimationFrame(() => moveIndicator(item, true));
 
-      /* Animação de saída do conteúdo */
-      const curMain = document.querySelector('.page-wrapper');
-      if (curMain) {
-        curMain.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
-        curMain.style.opacity    = '0';
-        curMain.style.transform  = 'translateY(16px)';
-      }
-
-      /* Resolve o link sempre contra a base ORIGINAL da página — nunca contra
-         window.location atual, que fica desalinhada a cada pushState */
+      /* Navegação REAL da página (não troca só um pedaço via fetch).
+         A troca de conteúdo via fetch+innerHTML causava três bugs sérios:
+         imagens ficando com caminho desatualizado, animações de loading
+         que nunca reiniciavam, e cliques em cards que paravam de responder
+         (porque os scripts da página nova nunca eram executados de novo).
+         Uma navegação real corrige tudo isso de uma vez, mantendo a
+         transição suave por meio do mesmo overlay usado no resto do site. */
       const resolvedUrl = new URL(href, initialBase).href;
+      const overlay = document.querySelector('.page-transition');
+      if (overlay) overlay.classList.add('entering');
 
-      /* Carrega nova página */
       setTimeout(() => {
-        fetch(resolvedUrl)
-          .then(res => {
-            if (!res.ok) {
-              throw new Error(`Falha ao carregar ${resolvedUrl}: ${res.status}`);
-            }
-            return res.text();
-          })
-          .then(html => {
-            const parser  = new DOMParser();
-            const newDoc  = parser.parseFromString(html, 'text/html');
-            const newMain = newDoc.querySelector('.page-wrapper');
-            const curMain = document.querySelector('.page-wrapper');
-
-            if (newMain && curMain) {
-              curMain.innerHTML = newMain.innerHTML;
-              document.title    = newDoc.title;
-              history.pushState({}, '', resolvedUrl);
-              window.scrollTo(0, 0);
-
-              /* Animação de entrada */
-              curMain.style.transition = 'none';
-              curMain.style.opacity    = '0';
-              curMain.style.transform  = 'translateY(-12px)';
-
-              requestAnimationFrame(() => {
-                requestAnimationFrame(() => {
-                  curMain.style.transition = 'opacity 0.45s cubic-bezier(0.19,1,0.22,1), transform 0.45s cubic-bezier(0.19,1,0.22,1)';
-                  curMain.style.opacity    = '1';
-                  curMain.style.transform  = 'translateY(0)';
-                });
-              });
-
-              /* Re-inicializa scroll reveal */
-              const newEls = curMain.querySelectorAll('.reveal');
-              const observer = new IntersectionObserver((entries) => {
-                entries.forEach(e => {
-                  if (e.isIntersecting) {
-                    e.target.classList.add('visible');
-                    observer.unobserve(e.target);
-                  }
-                });
-              }, { threshold: 0.05 });
-
-              newEls.forEach(el => {
-                const rect = el.getBoundingClientRect();
-                if (rect.top < window.innerHeight) {
-                  setTimeout(() => el.classList.add('visible'), 150);
-                } else {
-                  observer.observe(el);
-                }
-              });
-            }
-          })
-          .catch(() => {
-            window.location.href = resolvedUrl;
-          });
-      }, 280);
+        window.location.href = resolvedUrl;
+      }, 380);
     });
   });
 
