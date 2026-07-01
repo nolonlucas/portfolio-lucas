@@ -107,6 +107,11 @@ function initBottomNav() {
   const bottomNav = document.querySelector('.bottom-nav');
   if (!bottomNav) return;
 
+  /* Base fixa da página real (a bottom-nav nunca é substituída pela navegação
+     SPA, então seus hrefs são sempre relativos a ESTA base original — mesmo
+     depois de vários pushState mudarem window.location) */
+  const initialBase = document.baseURI;
+
   /* Garante que está no body e não dentro do page-wrapper */
   if (bottomNav.parentElement !== document.body) {
     document.body.appendChild(bottomNav);
@@ -186,10 +191,19 @@ function initBottomNav() {
         curMain.style.transform  = 'translateY(16px)';
       }
 
+      /* Resolve o link sempre contra a base ORIGINAL da página — nunca contra
+         window.location atual, que fica desalinhada a cada pushState */
+      const resolvedUrl = new URL(href, initialBase).href;
+
       /* Carrega nova página */
       setTimeout(() => {
-        fetch(href)
-          .then(res => res.text())
+        fetch(resolvedUrl)
+          .then(res => {
+            if (!res.ok) {
+              throw new Error(`Falha ao carregar ${resolvedUrl}: ${res.status}`);
+            }
+            return res.text();
+          })
           .then(html => {
             const parser  = new DOMParser();
             const newDoc  = parser.parseFromString(html, 'text/html');
@@ -199,7 +213,7 @@ function initBottomNav() {
             if (newMain && curMain) {
               curMain.innerHTML = newMain.innerHTML;
               document.title    = newDoc.title;
-              history.pushState({}, '', href);
+              history.pushState({}, '', resolvedUrl);
               window.scrollTo(0, 0);
 
               /* Animação de entrada */
@@ -237,7 +251,7 @@ function initBottomNav() {
             }
           })
           .catch(() => {
-            window.location.href = href;
+            window.location.href = resolvedUrl;
           });
       }, 280);
     });
@@ -507,7 +521,12 @@ window.addEventListener('popstate', () => {
   }, 50);
 
   // Animação de saída ao navegar
+  // (itens da .bottom-nav são ignorados aqui: eles já têm seu próprio
+  // sistema de navegação/transição em initBottomNav, e ter os dois juntos
+  // causava uma corrida entre pushState e navegação real, quebrando links)
   document.querySelectorAll('a[href]').forEach(a => {
+    if (a.closest('.bottom-nav')) return;
+
     const href = a.getAttribute('href');
     // Só páginas internas (não âncoras, não externas)
     if (!href || href.startsWith('#') || href.startsWith('http') || href.startsWith('mailto')) return;
@@ -765,32 +784,34 @@ const projects = {
     thumbnail: 'thumb.webp',
     github: 'https://farmacia-site-tau.vercel.app',
     demo: '#',
-    status: 'Concluído',
+    status: 'Não finalizado',
     year: '2025',
     role: 'Desenvolvedor Front-End',
     techs: ['HTML5', 'CSS3', 'JavaScript', 'sessionStorage']
   },
-  cyberportal: {
-    id: 'cyberportal',
-    title: 'CyberPortal',
+  clothingstore: {
+    id: 'clothingstore',
+    title: 'Clothing Store',
     category: 'Website',
-    subtitle: 'Dashboard de vulnerabilidades com gráficos e relatórios.',
-    about: 'CyberPortal apresenta um painel completo para análise de vulnerabilidades e insights de segurança, com navegação clara e visual moderno inspirado no tema cyberpunk.',
+    subtitle: 'E-commerce de moda ilustrativo, com catálogo, carrinho e animações premium.',
+    about: 'Clothing Store é um projeto front-end ilustrativo (HTML, CSS e JavaScript puro) que simula o e-commerce de uma marca de moda feminina — não vende produtos reais nem processa pagamentos. O catálogo é organizado por categorias (roupas, acessórios, linha sustentável, novidades e promoções) e cada card de produto troca automaticamente para uma foto secundária ao passar o mouse no desktop ou deslizar o dedo no mobile. O carrinho e a lista de desejos são persistidos em sessionStorage, com atualização em tempo real do contador e do total. As páginas contam com filtros por tag, uma faixa de destaques em looping (marquee) e formulário de newsletter. Toda a experiência é conduzida por animações refinadas com GSAP e ScrollTrigger — revelação de elementos no scroll com stagger orgânico, header que reage ao scroll e transições suaves entre páginas — além de rolagem suave via Lenis e feedback de toque dedicado para os cards de categoria no mobile.',
     features: [
-      { icon: '🛡️', text: 'Visualização de riscos e vulnerabilidades em tempo real.' },
-      { icon: '📈', text: 'Gráficos interativos e relatórios exportáveis.' },
-      { icon: '🔍', text: 'Filtros avançados para investigação de incidentes.' },
-      { icon: '🎛️', text: 'Painéis customizáveis com métricas essenciais.' }
+      { icon: '🛍️', text: 'Catálogo de produtos por categoria, com filtros por tag.' },
+      { icon: '🖼️', text: 'Card com troca de foto no hover (desktop) e swipe (mobile).' },
+      { icon: '🛒', text: 'Carrinho e wishlist persistidos em sessionStorage.' },
+      { icon: '✨', text: 'Animações de scroll com GSAP/ScrollTrigger e stagger orgânico.' },
+      { icon: '🌀', text: 'Rolagem suave via Lenis e transições animadas entre páginas.' },
+      { icon: '📱', text: 'Feedback de toque customizado nos cards de categoria (mobile).' }
     ],
     architectureImage: 'thumb.webp',
     previewVideo: 'preview.mp4',
     thumbnail: 'thumb.webp',
-    github: '#',
+    github: 'https://clothing-store-sand-gamma.vercel.app',
     demo: '#',
-    status: 'Concluído',
-    year: '2024',
+    status: 'Não finalizado',
+    year: '2026',
     role: 'Desenvolvedor Front-End',
-    techs: ['HTML5', 'CSS3', 'Chart.js', 'JavaScript']
+    techs: ['HTML5', 'CSS3', 'JavaScript', 'GSAP', 'Lenis']
   },
   gifdisplaycontroller: {
     id: 'gifdisplaycontroller',
