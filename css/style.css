@@ -44,6 +44,7 @@
 html {
   scroll-behavior: smooth;
   font-size: 16px;
+  background-color: var(--dark);
 }
 
 body {
@@ -275,6 +276,7 @@ body:hover .cursor { opacity: 1; }
   position: relative;
   z-index: 10;
   min-height: 100vh;
+  min-height: 100dvh;
 }
 
 /* === NAVIGATION === */
@@ -623,6 +625,7 @@ h1, h2, h3 {
 /* === HERO (index.html) === */
 .hero {
   min-height: 100vh;
+  min-height: 100dvh;
   display: flex;
   align-items: center;
   padding-top: 70px;
@@ -786,6 +789,7 @@ h1, h2, h3 {
 /* === ABOUT PAGE === */
 .about-hero {
   min-height: 100vh;
+  min-height: 100dvh;
   padding-top: 70px;
   display: flex;
   align-items: center;
@@ -1600,6 +1604,7 @@ h1, h2, h3 {
 /* === CONTACT PAGE === */
 .contact-section {
   min-height: 100vh;
+  min-height: 100dvh;
   padding-top: 70px;
   display: flex;
   align-items: center;
