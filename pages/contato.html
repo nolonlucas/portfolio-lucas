@@ -87,9 +87,9 @@
                   <span>lcdias75@gmail.com</span>
                 </a>
 
-                <a href="https://github.com" target="_blank" rel="noopener" class="contact-link-item" aria-label="GitHub">
+                <a href="https://github.com/nolonlucas" target="_blank" rel="noopener" class="contact-link-item" aria-label="GitHub">
                   <span class="icon">⌥</span>
-                  <span>github.com/seuusuario</span>
+                  <span>https://github.com/nolonlucas</span>
                 </a>
 
                 <a href="https://linkedin.com" target="_blank" rel="noopener" class="contact-link-item" aria-label="LinkedIn">
@@ -113,6 +113,13 @@
                 <p style="font-size:1.5rem; margin-bottom:0.5rem;">✓</p>
                 <p>Mensagem enviada com sucesso!</p>
                 <p style="color:var(--gray-400); font-size:0.75rem; margin-top:0.5rem;">Responderei em breve.</p>
+              </div>
+
+              <!-- Mensagem de erro de envio (oculta por padrão) -->
+              <div class="form-error-general" role="alert" aria-live="polite" style="display:none; background:rgba(255,68,68,0.06); border:0.5px solid rgba(255,68,68,0.3); padding:1.2rem; font-family:var(--font-mono); font-size:0.85rem; color:#ff6666; text-align:center; border-radius:12px;">
+                <p style="font-size:1.5rem; margin-bottom:0.5rem;">✕</p>
+                <p>Não foi possível enviar sua mensagem.</p>
+                <p style="color:var(--gray-400); font-size:0.75rem; margin-top:0.5rem;">Tente novamente ou me chame direto pelo WhatsApp/e-mail.</p>
               </div>
 
               <!-- FORMULÁRIO -->
@@ -209,22 +216,37 @@
   <!-- BOTTOM NAV MOBILE -->
   <nav class="bottom-nav" role="navigation" aria-label="Navegação mobile">
     <a href="../index.html" class="bottom-nav__item" aria-label="Home">
-      <div class="bottom-nav__icon">⌂</div>
+      <div class="bottom-nav__icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11.5 12 4l8 7.5"/><path d="M6 10v9a1 1 0 0 0 1 1h3v-5.5h4V20h3a1 1 0 0 0 1-1v-9"/></svg>
+      </div>
       <span class="bottom-nav__label">Home</span>
     </a>
     <a href="sobre.html" class="bottom-nav__item" aria-label="Sobre">
-      <div class="bottom-nav__icon">◉</div>
+      <div class="bottom-nav__icon">
+        <img src="../Assets/profile_picture.png" alt="Sobre" />
+      </div>
       <span class="bottom-nav__label">Sobre</span>
     </a>
     <a href="projetos.html" class="bottom-nav__item" aria-label="Projetos">
-      <div class="bottom-nav__icon">⊞</div>
+      <div class="bottom-nav__icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7a1 1 0 0 1 1-1h5l2 2h9a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V7Z"/></svg>
+      </div>
       <span class="bottom-nav__label">Projetos</span>
     </a>
     <a href="contato.html" class="bottom-nav__item active" aria-label="Contato">
-      <div class="bottom-nav__icon">✉</div>
+      <div class="bottom-nav__icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3.5 6 8.5 7 8.5-7"/></svg>
+      </div>
       <span class="bottom-nav__label">Contato</span>
     </a>
   </nav>
+
+  <!-- EmailJS: envia o formulário de contato de verdade (site é estático, sem backend) -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script>
+    // ⚠️ Troque "SUA_PUBLIC_KEY" pela sua Public Key da conta EmailJS (emailjs.com)
+    emailjs.init({ publicKey: "hRoY7SWzBcvwB_Nza" });
+  </script>
 
   <script src="../js/main.js"></script>
 </body>

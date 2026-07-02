@@ -630,7 +630,7 @@ window.addEventListener('popstate', () => {
 
       function frame(now) {
         const progress = Math.min((now - start) / duration, 1);
-        fill.style.width = `${Math.round(progress * 100)}%`;
+        fill.style.transform = `scaleX(${progress})`;
         if (progress < 1) {
           requestAnimationFrame(frame);
         } else {
@@ -654,29 +654,30 @@ window.addEventListener('popstate', () => {
 
 // === PROJECT CARD NAVIGATION ===
 (function initProjectCardNavigation() {
-  const cards = Array.from(document.querySelectorAll('.project-card[data-project]'));
-  if (!cards.length) return;
-
+  // Delegação de evento no document: funciona tanto para os cards que já
+  // existem na página quanto para os cards criados depois via JS (ex: a
+  // seção "Outros Projetos" em project.html, montada dinamicamente).
   const pathPrefix = window.location.pathname.includes('/pages/') ? '' : 'pages/';
 
-  cards.forEach(card => {
-    card.addEventListener('click', (event) => {
-      const clickedLink = event.target.closest('a');
-      if (clickedLink && clickedLink.classList.contains('project-link-btn')) {
-        return;
-      }
+  document.addEventListener('click', (event) => {
+    const card = event.target.closest('.project-card[data-project]');
+    if (!card) return;
 
-      const linkContainer = event.target.closest('.project-card__links');
-      if (linkContainer) {
-        const link = event.target.closest('a');
-        if (link) return;
-      }
+    const clickedLink = event.target.closest('a');
+    if (clickedLink && clickedLink.classList.contains('project-link-btn')) {
+      return;
+    }
 
-      const projectId = card.dataset.project;
-      if (!projectId) return;
+    const linkContainer = event.target.closest('.project-card__links');
+    if (linkContainer) {
+      const link = event.target.closest('a');
+      if (link) return;
+    }
 
-      window.location.href = `${pathPrefix}project.html?project=${encodeURIComponent(projectId)}`;
-    });
+    const projectId = card.dataset.project;
+    if (!projectId) return;
+
+    window.location.href = `${pathPrefix}project.html?project=${encodeURIComponent(projectId)}`;
   });
 })();
 
@@ -1204,17 +1205,44 @@ function animateCounter(el, target, duration = 1500) {
 
     if (!allValid) return;
 
-    // Simula envio
     const btn = form.querySelector('[type="submit"]');
     const originalText = btn.innerHTML;
     btn.innerHTML = '<span>> enviando...</span>';
     btn.disabled  = true;
 
-    setTimeout(() => {
+    const errorBox = document.querySelector('.form-error-general');
+    if (errorBox) errorBox.style.display = 'none';
+
+    // Envio real via EmailJS (site estático, sem backend próprio)
+    // Troque os IDs abaixo pelos gerados na sua conta em https://www.emailjs.com
+    const SERVICE_ID  = 'service_vs7vbbf';
+    const TEMPLATE_ID = 'template_ug2a1xy';
+
+    if (typeof emailjs === 'undefined') {
+      console.error('EmailJS não carregado. Verifique se o script do EmailJS está incluído antes de main.js.');
+      btn.innerHTML = originalText;
+      btn.disabled  = false;
+      if (errorBox) errorBox.style.display = 'block';
+      return;
+    }
+
+    emailjs.send(SERVICE_ID, TEMPLATE_ID, {
+      from_name:  fields.name.el.value.trim(),
+      from_email: fields.email.el.value.trim(),
+      subject:    fields.subject.el.value.trim(),
+      message:    fields.message.el.value.trim()
+    })
+    .then(() => {
       form.style.display = 'none';
       const success = document.querySelector('.form-success');
       if (success) success.classList.add('visible');
-    }, 1500);
+    })
+    .catch((err) => {
+      console.error('Erro ao enviar mensagem via EmailJS:', err);
+      btn.innerHTML = originalText;
+      btn.disabled  = false;
+      if (errorBox) errorBox.style.display = 'block';
+    });
   });
 })();
 
@@ -1248,11 +1276,15 @@ function animateCounter(el, target, duration = 1500) {
 (function initMatrixRain() {
   const canvas = document.getElementById('matrix-canvas');
   if (!canvas) return;
-  const ctx = canvas.getContext('2d');
+  const ctx = canvas.getContext('2d', { alpha: true });
 
   let cols, drops;
   const fontSize = 14;
   const chars = '01';
+  const frameInterval = 45; // ms entre frames (~22fps, suficiente para o efeito)
+
+  let lastFrameTime = 0;
+  let rafId = null;
 
   function resize() {
     canvas.width  = window.innerWidth;
@@ -1279,9 +1311,27 @@ function animateCounter(el, target, duration = 1500) {
     }
   }
 
+  /* requestAnimationFrame em vez de setInterval: sincroniza com o navegador
+     e evita empilhar timers. Continua rodando durante o scroll (é um desenho
+     leve, não é isso que causava o travamento) — só pausa com a aba oculta,
+     para não gastar bateria/CPU à toa em segundo plano. */
+  function loop(now) {
+    rafId = requestAnimationFrame(loop);
+
+    if (document.hidden) return;
+    if (now - lastFrameTime < frameInterval) return;
+
+    lastFrameTime = now;
+    draw();
+  }
+
+  document.addEventListener('visibilitychange', () => {
+    if (!document.hidden) lastFrameTime = 0;
+  });
+
   resize();
   window.addEventListener('resize', resize);
-  setInterval(draw, 45);
+  rafId = requestAnimationFrame(loop);
 })();
 
 // ============================================

@@ -71,7 +71,7 @@
             <!-- IMAGEM / PLACEHOLDER -->
             <div class="about__img-wrap reveal reveal-delay-1">
               <div class="about__img-box">
-                <span class="about__img-placeholder" aria-hidden="true">&gt;_</span>
+                <img src="../Assets/profile_picture.png" alt="Foto de perfil" class="about__img-photo" />
                 <div class="about__corner about__corner--tl"></div>
                 <div class="about__corner about__corner--tr"></div>
                 <div class="about__corner about__corner--bl"></div>
@@ -80,7 +80,7 @@
               <!-- Linha decorativa abaixo da imagem -->
               <div style="margin-top:1rem; display:flex; gap:0.5rem; align-items:center;">
                 <div style="width:40px; height:1px; background:var(--green); opacity:0.5;"></div>
-                <span style="font-family:var(--font-mono); font-size:0.65rem; color:var(--gray-400); letter-spacing:0.1em;">FOTO AQUI</span>
+                <span style="font-family:var(--font-mono); font-size:0.65rem; color:var(--gray-400); letter-spacing:0.1em;">LUCAS DIAS</span>
               </div>
             </div>
 
@@ -111,7 +111,7 @@
               <!-- STATS -->
               <div class="stats-row reveal reveal-delay-3">
                 <div class="stat">
-                  <span class="stat__num" data-counter="7" data-suffix="+">7+</span>
+                  <span class="stat__num" data-counter="8" data-suffix="+">8+</span>
                   <span class="stat__label">Projetos concluídos</span>
                 </div>
                 <div class="stat">
@@ -119,7 +119,7 @@
                   <span class="stat__label">Anos estudando</span>
                 </div>
                 <div class="stat">
-                  <span class="stat__num" data-counter="7" data-suffix="+">7+</span>
+                  <span class="stat__num" data-counter="15" data-suffix="+">15+</span>
                   <span class="stat__label">Tecnologias</span>
                 </div>
               </div>
@@ -133,11 +133,17 @@
                   <span class="skill-tag">HTML5</span>
                   <span class="skill-tag">CSS3</span>
                   <span class="skill-tag">JavaScript</span>
-                  <span class="skill-tag">React</span>
-                  <span class="skill-tag">Node.js</span>
+                  <span class="skill-tag">GSAP</span>
+                  <span class="skill-tag">Python</span>
+                  <span class="skill-tag">C++</span>
+                  <span class="skill-tag">Flask</span>
+                  <span class="skill-tag">PyQt6 / Tkinter</span>
+                  <span class="skill-tag">OpenCV</span>
+                  <span class="skill-tag">YOLOv3</span>
+                  <span class="skill-tag">CUDA</span>
+                  <span class="skill-tag">IA Local (Ollama)</span>
+                  <span class="skill-tag">Automação Web</span>
                   <span class="skill-tag">Git</span>
-                  <span class="skill-tag">Figma</span>
-                  <span class="skill-tag">MySQL</span>
                   <span class="skill-tag">Linux</span>
                 </div>
               </div>
@@ -205,25 +211,43 @@
   <!-- BOTTOM NAV MOBILE -->
   <nav class="bottom-nav" role="navigation" aria-label="Navegação mobile">
     <a href="../index.html" class="bottom-nav__item" aria-label="Home">
-      <div class="bottom-nav__icon">⌂</div>
+      <div class="bottom-nav__icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11.5 12 4l8 7.5"/><path d="M6 10v9a1 1 0 0 0 1 1h3v-5.5h4V20h3a1 1 0 0 0 1-1v-9"/></svg>
+      </div>
       <span class="bottom-nav__label">Home</span>
     </a>
     <a href="sobre.html" class="bottom-nav__item active" aria-label="Sobre">
-      <div class="bottom-nav__icon">◉</div>
+      <div class="bottom-nav__icon">
+        <img src="../Assets/profile_picture.png" alt="Sobre" />
+      </div>
       <span class="bottom-nav__label">Sobre</span>
     </a>
     <a href="projetos.html" class="bottom-nav__item" aria-label="Projetos">
-      <div class="bottom-nav__icon">⊞</div>
+      <div class="bottom-nav__icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7a1 1 0 0 1 1-1h5l2 2h9a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V7Z"/></svg>
+      </div>
       <span class="bottom-nav__label">Projetos</span>
     </a>
     <a href="contato.html" class="bottom-nav__item" aria-label="Contato">
-      <div class="bottom-nav__icon">✉</div>
+      <div class="bottom-nav__icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3.5 6 8.5 7 8.5-7"/></svg>
+      </div>
       <span class="bottom-nav__label">Contato</span>
     </a>
   </nav>
 
   <script src="../js/main.js"></script>
   <style>
+    /* Foto de perfil na seção Sobre */
+    .about__img-photo {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: grayscale(15%) contrast(1.05);
+      position: relative;
+    }
+
     /* Timeline styles */
     .timeline-item {
       display: flex;
